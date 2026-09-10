@@ -11,6 +11,10 @@
                 :execution="execution"
                 class="gantt-progress"
             />
+            <FailureDebugPanel
+                :execution="execution"
+                :flow="executionsStore.flow"
+            />
             <KsEmptyState v-if="series.length === 0" :image="emptyIllustration">
                 <template #description>
                     <span class="gantt-empty-status">
@@ -230,6 +234,7 @@
     import emptyIllustration from "../../assets/empty_visuals/generic.svg"
     import {buildTaskRunHierarchy} from "../../utils/taskRunHierarchy"
     import {computeTaskBarPercents} from "../../utils/ganttSeries"
+    import FailureDebugPanel from "./gantt/FailureDebugPanel.vue"
 
     import {storageKeys} from "../../utils/constants"
     type TaskRun = ExecutionTaskRun
